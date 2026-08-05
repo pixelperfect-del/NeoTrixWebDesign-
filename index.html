@@ -14,7 +14,6 @@
             --accent-purple: #8b5cf6;
             --accent-pink: #ec4899;
             --gradient-main: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%);
-            --whatsapp-color: #25d366;
             --text-main: #f9fafb;
             --text-muted: #9ca3af;
         }
@@ -84,23 +83,21 @@
         }
         nav a:hover { color: var(--accent-cyan); }
 
-        .nav-whatsapp {
-            background: var(--whatsapp-color);
+        .nav-cta {
+            background: var(--gradient-main);
             color: white !important;
-            padding: 8px 16px;
+            padding: 8px 20px;
             border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
             white-space: nowrap;
         }
-        .nav-whatsapp:hover {
+        .nav-cta:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.6);
         }
         
         .hero { 
@@ -248,6 +245,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1); 
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             width: 100%;
+            position: relative;
         }
         .direct-email {
             text-align: center;
@@ -283,28 +281,26 @@
         }
         textarea { resize: vertical; height: 120px; }
 
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background-color: var(--whatsapp-color);
-            color: #fff;
-            width: 60px;
-            height: 60px;
-            border-radius: 50px;
+        /* Success Message Overlay Styling */
+        #success-message {
+            display: none;
             text-align: center;
-            font-size: 30px;
-            box-shadow: 0 0 25px rgba(37, 211, 102, 0.5);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 30px 10px;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1) rotate(10deg);
-            box-shadow: 0 0 35px rgba(37, 211, 102, 0.8);
+        #success-message i {
+            font-size: 3.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+        }
+        #success-message h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        #success-message p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin: 0;
         }
 
         footer {
@@ -335,9 +331,7 @@
                 <a href="#services" style="margin-right: 20px;">Features</a>
                 <a href="#work">Showcase</a>
             </nav>
-            <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20NeoTrix,%20I%20want%20a%20website%20to%20draw%20more%20customers!" target="_blank" class="nav-whatsapp">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Chat Now
-            </a>
+            <a href="#contact" class="nav-cta">Get Started</a>
         </div>
     </header>
 
@@ -414,29 +408,57 @@
 
     <section id="contact" class="contact-section">
         <div class="contact-wrapper">
-            <div class="section-header" style="margin-bottom: 15px;">
-                <h2>Ready for More Customers?</h2>
-                <p style="margin: 0;">Fill out the details below or email us directly!</p>
+            <div id="form-container">
+                <div class="section-header" style="margin-bottom: 15px;">
+                    <h2>Ready for More Customers?</h2>
+                    <p style="margin: 0;">Fill out the details below or email us directly!</p>
+                </div>
+                <div class="direct-email">
+                    <i class="fa-regular fa-envelope" style="margin-right: 5px;"></i> Direct Email: <a href="mailto:NeoTrixWebDesign@hotmail.com">NeoTrixWebDesign@hotmail.com</a>
+                </div>
+                <form id="inquiry-form" action="https://formspree.io/f/NeoTrixWebDesign@hotmail.com" method="POST">
+                    <input type="text" name="name" placeholder="Your Name / Business Name" required>
+                    <input type="email" name="email" placeholder="Your Email Address" required>
+                    <textarea name="message" placeholder="Tell us about your business and goals..." required></textarea>
+                    <button type="submit" class="btn" style="border: none; cursor: pointer; text-align: center; border-radius: 50px; width: 100%;">Request Your Page</button>
+                </form>
             </div>
-            <div class="direct-email">
-                <i class="fa-regular fa-envelope" style="margin-right: 5px;"></i> Direct Email: <a href="mailto:NeoTrixWebDesign@hotmail.com">NeoTrixWebDesign@hotmail.com</a>
+
+            <div id="success-message">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>Thank you for your inquiry</h3>
+                <p>A member of our team will be emailing you shortly.<br><strong style="color: var(--accent-cyan); display: inline-block; margin-top: 15px;">-NeoTrixWebDesign</strong></p>
             </div>
-            <form action="mailto:NeoTrixWebDesign@hotmail.com" method="POST" enctype="text/plain">
-                <input type="text" name="name" placeholder="Your Name / Business Name" required>
-                <input type="email" name="email" placeholder="Your Email Address" required>
-                <textarea name="message" placeholder="Tell us about your business and goals..." required></textarea>
-                <button type="submit" class="btn" style="border: none; cursor: pointer; text-align: center; border-radius: 50px; width: 100%;">Request Your Page</button>
-            </form>
         </div>
     </section>
-
-    <a href="https://wa.me/YOUR_PHONE_NUMBER?text=Hi%20NeoTrix,%20I%20want%20a%20website%20to%20draw%20more%20customers!" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
 
     <footer>
         <p>&copy; 2026 NeoTrix Web Design. All rights reserved.</p>
     </footer>
 
+    <script>
+        const form = document.getElementById('inquiry-form');
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'json' }
+                });
+                if (response.ok || response.type === 'opaque') {
+                    document.getElementById('form-container').style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                } else {
+                    document.getElementById('form-container').style.display = 'none';
+                    document.getElementById('success-message').style.display = 'block';
+                }
+            } catch (error) {
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 </html>
