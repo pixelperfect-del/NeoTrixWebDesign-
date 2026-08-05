@@ -416,7 +416,8 @@
                 <div class="direct-email">
                     <i class="fa-regular fa-envelope" style="margin-right: 5px;"></i> Direct Email: <a href="mailto:NeoTrixWebDesign@hotmail.com">NeoTrixWebDesign@hotmail.com</a>
                 </div>
-                <form id="inquiry-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <form id="inquiry-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="9c2e1773-a5ef-4927-accd-ab750794dd56">
                     <input type="text" name="name" placeholder="Your Name / Business Name" required>
                     <input type="email" name="email" placeholder="Your Email Address" required>
                     <textarea name="message" placeholder="Tell us about your business and goals..." required></textarea>
@@ -447,19 +448,17 @@
                     body: formData,
                     headers: { 'Accept': 'json' }
                 });
-                if (response.ok || response.type === 'opaque') {
+                const result = await response.json();
+                if (result.success) {
                     document.getElementById('form-container').style.display = 'none';
                     document.getElementById('success-message').style.display = 'block';
                 } else {
-                    document.getElementById('form-container').style.display = 'none';
-                    document.getElementById('success-message').style.display = 'block';
+                    alert('Error: ' + result.message);
                 }
             } catch (error) {
-                document.getElementById('form-container').style.display = 'none';
-                document.getElementById('success-message').style.display = 'block';
+                alert('Network connection error. Please try again.');
             }
         });
     </script>
 </body>
-                        </html>
-                        
+</html>
